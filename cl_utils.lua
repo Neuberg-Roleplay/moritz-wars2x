@@ -153,7 +153,63 @@ end
 
 -- Returns if the current resource name is valid
 function UTIL:IsResourceNameValid()
-	return GetCurrentResourceName() == "wk_wars2x"
+	-- Allow renamed resources (e.g. moritz-*) without breaking keybind registration.
+	return true
+end
+
+--[[----------------------------------------------------------------------------------
+    Patrol vehicle allowlist helpers
+----------------------------------------------------------------------------------]]--
+UTIL._patrolVehicleHashSet = nil
+
+local function _buildPatrolVehicleHashSet()
+	local set = {}
+
+	if ( CONFIG ~= nil and type( CONFIG.patrolVehicleModels ) == "table" ) then
+		for _, name in pairs( CONFIG.patrolVehicleModels ) do
+			if ( type( name ) == "string" ) then
+				local cleaned = string.lower( name )
+				set[ GetHashKey( cleaned ) ] = true
+			end
+		end
+	end
+
+	return set
+end
+
+-- Returns true if the vehicle is allowed to run the radar/reader.
+-- If CONFIG.patrolVehicleModels is empty, this returns true for ALL vehicles.
+function UTIL:IsPatrolVehicle( veh )
+	if ( veh == nil or veh == 0 or not DoesEntityExist( veh ) ) then return false end
+
+	-- Lazy-build the hash set
+	if ( self._patrolVehicleHashSet == nil ) then
+		self._patrolVehicleHashSet = _buildPatrolVehicleHashSet()
+	end
+
+	-- If the allowlist is empty, allow everything (failsafe).
+	local allowAll = true
+	if ( CONFIG ~= nil and type( CONFIG.patrolVehicleModels ) == "table" ) then
+		-- If there is at least one string entry, we consider it a real allowlist.
+		for _, v in pairs( CONFIG.patrolVehicleModels ) do
+			if ( type( v ) == "string" and v ~= "" ) then
+				allowAll = false
+				break
+			end
+		end
+	end
+
+	if ( allowAll ) then
+		return true
+	end
+
+	local mdl = GetEntityModel( veh )
+	return self._patrolVehicleHashSet[ mdl ] == true
+end
+
+-- Clears the cached allowlist (only needed if you edit config at runtime and restart resource-less).
+function UTIL:ResetPatrolVehicleCache()
+	self._patrolVehicleHashSet = nil
 end
 
 --[[The MIT License (MIT)

@@ -68,7 +68,7 @@ CONFIG.use_sonorancad = false
 CONFIG.keyDefaults =
 {
 	-- Remote control key
-	remote_control = "f5",
+	remote_control = "k",
 
 	-- Radar key lock key
 	key_lock = "l",
@@ -113,7 +113,7 @@ CONFIG.menuDefaults =
 
 	-- The speed unit used in conversions
 	-- Options: mph or kmh
-	["speedType"] = "mph",
+	["speedType"] = "kmh",
 
 	-- The state for automatic speed locking. This requires CONFIG.allow_fast_limit to be true.
 	-- Options: true or false
@@ -139,4 +139,42 @@ CONFIG.uiDefaults =
 	-- The safezone size, must be a multiple of 5.
 	-- Options: 0 - 100
 	safezone = 20
+}
+
+--[[----------------------------------------------------------------------------------
+    Vehicle allowlist (Patrol vehicles)
+    The radar/plate reader will ONLY work when you are inside one of these vehicles.
+    Put vehicle spawn names (model strings) here, e.g. "police", "police2", "fbi2", "nbpd_scout", etc.
+
+    - If the list is EMPTY, the system will allow ALL vehicles (so you don't lock yourself out by mistake).
+----------------------------------------------------------------------------------]]--
+CONFIG.patrolVehicleModels =
+{
+    "citamauripd",
+    "justizmauripd",
+    "jodyssey",
+    "jushart",
+    "jusrebla",
+    "jodyssey",
+    "kanzlerzpkw",
+    "mauripd",
+    "pol_vorschlaghammer",
+    "ipol",
+    "podyssey",
+    "polhart",
+    "polrebla",
+    "zargentpol",
+    "zbfam",
+    "zequator",
+    "zkanzlert",
+    "zmbrtourerpol",
+	"zvertreter",
+    "sf_panto",
+    "wolfHHV",
+    "f240rpd",
+    "ukpotsj",
+    "lore_vito_kdd",
+    "lore_vito_w3",
+    "lore_vito_dbs5k",
+    "rhinesed",
 }

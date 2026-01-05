@@ -1,3 +1,5 @@
+# Modified by Moritz for Neuberg RP!
+
 # Wraith ARS 2X
 The **Wraith ARS 2X** (Wraith Advanced Radar System) is a realistic police radar that takes heavy inspiration from the real Stalker DSR 2X radar system. It includes a plethora of features from the DSR 2X such as the new operator menu, to improve the realism and experience whilst using the newest instalment from the collection of Wraith radar systems. Previously with WraithRS, vehicle speeds were only displayed in the target window, with no priority to certain vehicles (such as large and slower vehicles, or smaller and faster vehicles). The Wraith ARS 2X tracks both large and faster, smaller targets and displays the speeds of both in the target windows, meaning the radar can track 4 different speeds with both antennas turned on and transmitting. Alongside the new radar system is also a plate reader that scans in front and behind the patrol vehicle, a BOLO plate can also be set, but developers can also hook into the scanner to link it into other resources. 
 
@@ -13,7 +15,7 @@ It's now installed! When you boot your server you should see a Wraith ARS 2X mes
 Although these can be viewed ingame through the operator manual, the default key binds are listed below. 
 | Action                    | Key                       | Description |
 | ------------------------- | ------------------------- | ----------- |
-| Open remote               | F5                        | Opens the remote control, this only works if you are the driver of a police vehicle (must have the vehicle class VC_EMERGENCY). |
+| Open remote               | K                        | Opens the remote control, this only works if you are the driver of a police vehicle (must have the vehicle class VC_EMERGENCY). |
 | Close remote              | ESC or right mouse button | Closes the remote/all of the displayed UI elements, and returns focus to the game. |
 | Lock/unlock front antenna | Numpad 8                  | Locks the current speed of the front antenna. If there is a fast speed displayed, the system will lock the fast speed. Otherwise it will lock the strong speed. When you lock a speed, the radar will audibly tell you which antenna is being locked, and the relative direction of the target compared to the patrol vehicle (e.g. "Front Closing"). |
 | Lock/unlock rear antenna  | Numpad 5                  | Locks the current speed of the rear antenna. If there is a fast speed displayed, the system will lock the fast speed. Otherwise it will lock the strong speed. When you lock a speed, the radar will audibly tell you which antenna is being locked, and the relative direction of the target compared to the patrol vehicle (e.g. "Rear Away"). |
@@ -55,7 +57,7 @@ CONFIG.use_sonorancad = false
 CONFIG.keyDefaults =
 {
 	-- Remote control key
-	remote_control = "f5",
+	remote_control = "k",
 
 	-- Radar key lock key
 	key_lock = "l",

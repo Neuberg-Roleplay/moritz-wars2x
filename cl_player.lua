@@ -101,7 +101,7 @@ Citizen.CreateThread( function()
 		PLY.veh = GetVehiclePedIsIn( PLY.ped, false )
 		PLY.inDriverSeat = GetPedInVehicleSeat( PLY.veh, -1 ) == PLY.ped
 		PLY.inPassengerSeat = GetPedInVehicleSeat( PLY.veh, 0 ) == PLY.ped
-		PLY.vehClassValid = GetVehicleClass( PLY.veh ) == 18
+		PLY.vehClassValid = UTIL:IsPatrolVehicle( PLY.veh )
 
 		Citizen.Wait( 500 )
 	end
@@ -115,8 +115,8 @@ Citizen.CreateThread( function()
 			-- Get the vehicle the player is entering
 			local vehEntering = GetVehiclePedIsEntering( PLY.ped )
 
-			-- Only proceed if the vehicle the player is entering is an emergency vehicle
-			if ( GetVehicleClass( vehEntering ) == 18 ) then
+			-- Only proceed if the vehicle the player is entering is an allowed patrol vehicle
+			if ( UTIL:IsPatrolVehicle( vehEntering ) ) then
 				-- Wait two seconds, this gives enough time for the player to get sat in the seat
 				Citizen.Wait( 2000 )
 

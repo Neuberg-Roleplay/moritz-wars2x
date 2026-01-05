@@ -2,6 +2,7 @@
 
 	Wraith ARS 2X
 	Created by WolfKnight
+	Modified by Moritz / Neuberg RP
 
 	For discussions, information on future updates, and more, join
 	my Discord: https://discord.gg/fD4e6WD
@@ -37,7 +38,7 @@ game "gta5"
 -- Define the resource metadata
 name "Wraith ARS 2X"
 description "Police radar and plate reader system for FiveM"
-author "WolfKnight"
+author "WolfKnight / Moritz"
 version "1.3.1"
 
 -- Include the files
