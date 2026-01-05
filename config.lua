@@ -68,7 +68,7 @@ CONFIG.use_sonorancad = false
 CONFIG.keyDefaults =
 {
 	-- Remote control key
-	remote_control = "k",
+	remote_control = "o",
 
 	-- Radar key lock key
 	key_lock = "l",
